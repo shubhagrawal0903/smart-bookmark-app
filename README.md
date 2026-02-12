@@ -9,7 +9,7 @@ The goal was to create a simple bookmark manager where:
 - Updates reflect in real-time across tabs
 - App is deployed on Vercel
 
-Live URL: https://smart-bookmark-app-six.vercel.app  
+Live URL: https://smart-bookmark-app-v1.vercel.app/  
 GitHub Repo: https://github.com/shubhagrawal0903/smart-bookmark-app 
 
 ---
