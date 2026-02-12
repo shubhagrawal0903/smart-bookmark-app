@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Bookmark App
 
-## Getting Started
+This is a simple full-stack bookmark manager built using Next.js (App Router) and Supabase.
 
-First, run the development server:
+The goal of this project was to implement authentication, user-specific database access with RLS, and realtime updates using Supabase.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔹 What it does
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Users can sign in using Google
+- Add personal bookmarks
+- Delete bookmarks
+- See updates instantly across multiple tabs (Realtime)
+- Each user only sees their own data (Row Level Security enabled)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔹 Tech Used
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js (App Router)
+- Supabase (Auth, Database, Realtime)
+- Google OAuth
+- Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔹 Database Structure
 
-## Deploy on Vercel
+Table: `bookmarks`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Columns:
+- id (uuid, primary key)
+- user_id (uuid)
+- title (text)
+- url (text)
+- created_at (timestamp)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Row Level Security policies ensure users can only access their own records.
+
+---
+
+## 🔹 Running Locally
+
+Create a `.env.local` file:
+
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key  
+
+Then run:
+
+npm install  
+npm run dev  
+
+---
+
+## 🔹 Deployment
+
+The app is deployed on Vercel.
+
+Live URL: https://smart-bookmark-app-six.vercel.app
+
+---
+
+Built as part of a technical challenge.
