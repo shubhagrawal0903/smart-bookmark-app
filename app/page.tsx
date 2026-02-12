@@ -85,9 +85,14 @@ export default function Home() {
       <div className="flex h-screen items-center justify-center">
         <button
           onClick={() =>
-            supabase.auth.signInWithOAuth({ provider: "google" })
+            supabase.auth.signInWithOAuth({ 
+              provider: "google",
+              options: {
+                redirectTo: window.location.origin
+              }
+            })
           }
-          className="bg-black text-white px-6 py-3 rounded"
+          className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
         >
           Sign in with Google
         </button>
@@ -97,7 +102,15 @@ export default function Home() {
 
   return (
     <div className="max-w-xl mx-auto mt-10 space-y-4">
-      <h1 className="text-xl font-bold">Welcome {user.email}</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-bold">Welcome {user.email}</h1>
+        <button
+          onClick={logout}
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
+      </div>
 
       <div className="space-y-2">
         <input
@@ -114,7 +127,7 @@ export default function Home() {
         />
         <button
           onClick={addBookmark}
-          className="bg-black text-white px-4 py-2"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
           Add Bookmark
         </button>
@@ -147,12 +160,6 @@ export default function Home() {
         ))}
       </div>
 
-      <button
-        onClick={logout}
-        className="bg-red-500 text-white px-4 py-2"
-      >
-        Logout
-      </button>
     </div>
   )
 }
