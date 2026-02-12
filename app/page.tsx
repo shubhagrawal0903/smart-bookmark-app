@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase"
 
 export default function Home() {
   const [user, setUser] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
   const [title, setTitle] = useState("")
   const [url, setUrl] = useState("")
   const [bookmarks, setBookmarks] = useState<any[]>([])
@@ -15,6 +16,7 @@ export default function Home() {
       if (data.user) {
         setUser(data.user)
       }
+      setLoading(false)
     }
     getUser()
   }, [])
@@ -78,6 +80,14 @@ export default function Home() {
     await supabase.auth.signOut()
     setUser(null)
     setBookmarks([])
+  }
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    )
   }
 
   if (!user) {
