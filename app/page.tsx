@@ -101,9 +101,7 @@ export default function Home() {
             <h1 className="text-5xl font-bold text-white tracking-tight">
               Smart Bookmark App
             </h1>
-            <p className="text-xl text-gray-300 max-w-md mx-auto">
-              Save, organize, and access your favorite links anywhere, anytime
-            </p>
+            
           </div>
           <button
             onClick={() =>
